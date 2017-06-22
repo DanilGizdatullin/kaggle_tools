@@ -14,9 +14,7 @@ class Pipeline(object):
 
 
 class PipelineTrainTest(Pipeline):
-    def run_pipeline(self, df):
-        df1 = df[0]
-        df2 = df[1]
+    def run_pipeline(self, df1, df2):
         df1_tr = df1.copy()
         df2_tr = df2.copy()
         for func in self.pipeline:
