@@ -1,8 +1,8 @@
 from distutils.core import setup
 
 setup(
-    name='Pipeline',
+    name='kaggle_tools',
     version='0.1dev',
-    packages=['pipeline', ],
+    packages=['kaggle_tools', ],
     long_description=open('README.md').read(),
 )
