@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import KFold
+from sklearn.model_selection import StratifiedKFold
 import xgboost as xgb
 
 
@@ -30,7 +30,7 @@ class CVSklearn(object):
         :return: np.array with shape (self.n_folds, len(metrics)) where x is fold_id
         and y is correspondent metric from metrics
         """
-        kf = KFold(n_splits=self.n_folds, shuffle=True)
+        kf = StratifiedKFold(n_splits=self.n_folds, shuffle=True)
 
         columns = df.columns
 
@@ -39,7 +39,7 @@ class CVSklearn(object):
 
         metrics_values = []
 
-        for train, test in kf.split(x):
+        for train, test in kf.split(x, y):
 
             metrics_values_for_fold = np.zeros((1, len(metrics)))
 
@@ -98,7 +98,7 @@ class CVXGBoost(object):
         and y is correspondent metric from metrics
         """
 
-        kf = KFold(n_splits=self.n_folds, shuffle=True)
+        kf = StratifiedKFold(n_splits=self.n_folds, shuffle=True)
 
         columns = df.columns
 
@@ -107,7 +107,7 @@ class CVXGBoost(object):
 
         metrics_values = []
 
-        for train, test in kf.split(x):
+        for train, test in kf.split(x, y):
 
             metrics_values_for_fold = np.zeros((1, len(metrics)))
 
