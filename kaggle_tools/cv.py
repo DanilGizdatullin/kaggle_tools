@@ -54,7 +54,7 @@ class CVSklearn(object):
             test_df = pipeline_test.run_pipeline(test_df)
 
             if pipeline_both:
-                train_df, test_df = pipeline_both.run_pipeline((train_df, test_df))
+                train_df, test_df = pipeline_both.run_pipeline(train_df, test_df)
 
             x_train, x_test = train_df.values[:, :-1], test_df.values[:, :-1]
             y_train, y_test = train_df.values[:, -1], test_df.values[:, -1]
